@@ -22,15 +22,16 @@ public class Transaction {
     @Column(name="Transaction_Id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type="org.hibernate.type.UUIDCharType")
+    @JsonBackReference
     private UUID transactionId;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "accountId")
+    @JoinColumn(name = "SenderAccountId")
     @JsonBackReference
     private AccountInfo sender;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "accountId")
+    @JoinColumn(name = "ReceiverAccountId")
     @JsonBackReference
     private AccountInfo receiver;
 

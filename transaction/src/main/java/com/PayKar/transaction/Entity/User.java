@@ -21,14 +21,14 @@ public class User {
     @Column(name="User_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID id;
+    private UUID user_id;
 
     @Column
     private String username;
     private Long creationDate=System.currentTimeMillis();
 
     @JsonIgnore
-    @JoinColumn(name="accountId",columnDefinition = "varchar(36)",updatable = false)
+    @OneToOne(mappedBy = "user")
     @JsonManagedReference
     private  AccountInfo account;
 }
