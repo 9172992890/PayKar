@@ -12,6 +12,11 @@ public class ResourceController {
         return new ResponseEntity<>("Welcome to my homepage......", HttpStatus.OK);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Object> getData3(){
+        return new ResponseEntity<>("Welcome to my Redirected Page......", HttpStatus.OK);
+    }
+
     @GetMapping("/data")
     public ResponseEntity<Object> getData2(){
         return new ResponseEntity<>("this is a test endpoint to get the resource data......", HttpStatus.OK);
