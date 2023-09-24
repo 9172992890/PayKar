@@ -2,12 +2,20 @@ package com.PayKar.transaction.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table(name = "User")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @Column(name="User_ID")
@@ -22,5 +30,5 @@ public class User {
     @JsonIgnore
     @JoinColumn(name="accountId",columnDefinition = "varchar(36)",updatable = false)
     @JsonManagedReference
-    private  UUID accountId;
+    private  AccountInfo account;
 }
