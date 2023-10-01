@@ -20,4 +20,10 @@ public class UserService {
                 .filter(x->x.getUsername().equals(username))
                 .findFirst();
     }
+    public void createUser(User user){
+        userRepository.save(user);
+    }
+    public Optional<User> getAllUser(){
+        return null;
+    }
 }

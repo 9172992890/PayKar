@@ -27,15 +27,15 @@ public class ResourceController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<Object> getData3(@AuthenticationPrincipal OAuth2User principal){
+    public Optional<User> getData3(@AuthenticationPrincipal OAuth2User principal){
         String username=principal.getAttribute("login");
         String name = principal.getAttribute("name");
         String email=principal.getAttribute("email");
         Optional<User> user=userService.getUserByUsername(username);
         if(user.isEmpty()){
-         //Create a user and an account
+            userService.createUser(User.builder().username(username).creationDate(System.currentTimeMillis()).build());
         }
-        return new ResponseEntity<>("Hey "+name+" Welcome to my Redirected Page......", HttpStatus.OK);
+        return userService.getUserByUsername(username);
     }
 
     @GetMapping("/data")
